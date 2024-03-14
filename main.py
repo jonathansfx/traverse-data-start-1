@@ -12,13 +12,13 @@ for x in range(0, len(age_data)):
         underage += 1
     elif age_data[x] >= 18 and age_data[x] <= 35:
         young_adult += 1
-    elif age_data[x] > 35 and age_data[x] < 66:
+    elif age_data[x] >= 36 and age_data[x] <= 65:
         adult += 1
-
-
+    else:
+        senior += 1
 
 # number data
-with open ('number-data.txt', 'r') as number_data_file:
+with open('number-data.txt', 'r') as number_data_file:
     number_data = number_data_file.read().split('\n')
 
 even_numbers = 0
@@ -31,19 +31,22 @@ for x in range(0, len(number_data)):
     else:
         odd_numbers += 1
 
-
-
 # survey data
-with open ('survey-results.txt', 'r') as survey_results_file:
-    survey_results = survey_results_file.read().split('/n')
+with open('survey-results.txt', 'r') as survey_results_file:
+    survey_results = survey_results_file.read().split('\n')
 
-no_response = 0
 yes_response = 0
+no_response = 0
+maybe_response = 0
 
 for x in range(0, len(survey_results)):
-    if survey_results[x] == "yes":
+    if survey_results[x] == "Yes":
         yes_response += 1
-    elif survey_results[x] == "no":
+    elif survey_results[x] == "No":
         no_response += 1
+    elif survey_results[x] == "Maybe":
+        maybe_response += 1
 
-print(f"{underage} {young_adult} {adult} {even_numbers} {odd_numbers}" )
+print(f"Age Distribution: Under 18 ({underage}), 18 to 35 ({young_adult}), 36 to 65 ({adult}), Above 65 ({senior})")
+print(f"Number Analysis: Even ({even_numbers}), Odd ({odd_numbers})")
+print(f"Survey Results: Yes ({yes_response}), No ({no_response}), Maybe ({maybe_response})")
